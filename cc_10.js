@@ -134,6 +134,19 @@ class Inventory {
         this.orders.forEach(order => console.log(order.getOrderDetails())); 
     }
 
+    //Task 5 - Implemented Product Restocking
+
+    //Method to increase the stock of a product based on its product ID
+    restockProduct(productId, quantity) {
+        //Searching for the product in the inventory by its ID
+        let product = this.products.find(product => product.id === productId); 
+        
+        //If the product is found, increase its stock
+        if (product) {
+            product.stock += quantity; 
+        }
+    }
+
 }
 
 //Creating an inventory instance to store products
@@ -153,3 +166,9 @@ inventory.listOrders();
 
 //Displaying the updated product details after another order is placed and logging them to the console
 console.log(prod1.getDetails()); 
+
+//Restocking the Laptop product by adding 5 more units
+inventory.restockProduct(101, 5); 
+
+//Displaying the updated product details after restocking and logging them to the console
+console.log(prod1.getDetails());
