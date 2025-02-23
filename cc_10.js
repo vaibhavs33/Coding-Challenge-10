@@ -112,6 +112,28 @@ class Inventory {
     listProducts() {
         this.products.forEach(product => console.log(product.getDetails())); 
     }
+    //Task 4 - Implemented Order Management
+
+    //Method to create and place an order for a product
+    placeOrder(orderId, product, quantity) {
+        //Ensuring that there is enough stock before placing the order
+        if (product.stock >= quantity) {  
+            //Creating a new order
+            let order = new Order(orderId, product, quantity); 
+            
+            //Adding the new order to the list of orders
+            this.orders.push(order); 
+        } else {
+            //Logging to the console if there is insufficient stock
+            console.log(`There is insufficient stock! The stock of ${product.name} is currently ${product.stock}`);
+        }
+    }
+
+    //Method to display all orders placed in the inventory system
+    listOrders() {
+        this.orders.forEach(order => console.log(order.getOrderDetails())); 
+    }
+
 }
 
 //Creating an inventory instance to store products
@@ -122,3 +144,12 @@ inventory.addProduct(prod1);
 
 //Displaying all the products currently in the inventory
 inventory.listProducts();
+
+//Placing a new order for 2 laptops
+inventory.placeOrder(601, prod1, 2); 
+
+//Displaying all the orders placed in the system
+inventory.listOrders();
+
+//Displaying the updated product details after another order is placed and logging them to the console
+console.log(prod1.getDetails()); 
