@@ -48,3 +48,42 @@ prod1.updateStock(3);
 
 //Displaying the updated product details after the stock is reduced and logging them to the console
 console.log(prod1.getDetails()); 
+
+//Task 2 - Created Order Class
+
+//Defining a class to represent an Order in the system
+class Order {
+    //Constructor initializing an order with ID, product, and quantity
+    constructor(orderId, product, quantity) {
+        
+        //Storing the order ID
+        this.orderId = orderId;   
+        
+        //Storing the product being ordered
+        this.product = product;   
+        
+        //Storing the ordered quantity
+        this.quantity = quantity; 
+        
+        //Calculating the total order price
+        this.totalPrice = this.product.price * this.quantity;
+
+        //Reducing the stock of the product when the order is created
+        this.product.updateStock(this.quantity); 
+    }
+
+    //Method to return the order details as a formatted string
+    getOrderDetails() {
+        return `Order ID: ${this.orderId}, Product: ${this.product.name}, Quantity: ${this.quantity}, Total Price: $${this.totalPrice}`;
+    }
+}
+
+
+//Creating a new order for 2 laptops
+const order1 = new Order(501, prod1, 2); 
+
+//Displaying order details and logging them to the console
+console.log(order1.getOrderDetails()); 
+
+//Displaying the updated product details after the stock is reduced from the order and logging them to the console
+console.log(prod1.getDetails());
