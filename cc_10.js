@@ -87,3 +87,38 @@ console.log(order1.getOrderDetails());
 
 //Displaying the updated product details after the stock is reduced from the order and logging them to the console
 console.log(prod1.getDetails());
+
+//Task 3 - Created Inventory Class
+
+//Defining a class to manage an inventory system
+class Inventory {
+    //Constructor initializes an empty list of products and orders
+    constructor() {
+        //Array to store products in inventory
+        this.products = [];  //Array to store products in inventory
+        
+        //Array to store orders
+        this.orders = [];    
+    }
+
+    //Method to add a product to the inventory
+    addProduct(product) {
+        
+        //Storing the new product in the inventory list
+        this.products.push(product);
+    }
+
+    //Method to display all products in the inventory
+    listProducts() {
+        this.products.forEach(product => console.log(product.getDetails())); 
+    }
+}
+
+//Creating an inventory instance to store products
+const inventory = new Inventory(); 
+
+//Adding the Laptop product to the inventory
+inventory.addProduct(prod1); 
+
+//Displaying all the products currently in the inventory
+inventory.listProducts();
